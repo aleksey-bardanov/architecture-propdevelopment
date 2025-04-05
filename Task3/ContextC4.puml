@@ -18,7 +18,7 @@ System(prop_development, "Сервис PropDevelopment", "Предоставля
 
 System_Ext(government_registry, "Государственные регистрационные органы", "Отвечают за регистрационные действия с объектами недвижимости")
 System_Ext(tenant_services, "Поставщики услуг ЖКХ", "Уборка, вывоз мусора, оплата проживания")
-System_Ext(smart_home, "Сервисы услуг Умного дома", "Умный домофон, Умный шлагбаум", $tags="smart_home")
+System_Ext(smart_home, "IoT устройства", "Умные домофоны, Умные шлагбаумы", $tags="smart_home")
 
 Rel_D(customer, prop_development, "Использует")
 Rel_D(owner, prop_development, "Использует")
