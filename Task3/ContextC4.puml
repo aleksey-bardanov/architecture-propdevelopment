@@ -1,0 +1,33 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+AddElementTag("smart_home", $fontColor="#d73027")
+AddRelTag("smart_home", $textColor="#d73027", $lineColor="#d73027")
+
+title Диаграмма контекста компании PropDevelopment
+
+Person(customer, "Клиент", "Потенциальный покупатель недвижимости")
+Person(owner, "Собственник", "Клиент, приобретший недвижимость")
+Person(manager, "Менеджер", "Работает с клиентами и объектами недвижимости, администрирует онлайн-сделки")
+Person(business_analyst, "Бизнес аналитик", "Оптимизирует процессы и развивает прикладные бизнес-системы. Администрирует системы")
+Person(data_analyst, "Аналитик данных", "Анализирует данные и готовит отчётность")
+Person(accounter, "Бухгалтер", "Ведет бухгалтерский учет")
+Person(cybersecurity_spec, "Специалист по информационной безопасности", "Обеспечивает информационную безопасность", $tags="smart_home")
+
+System(prop_development, "Сервис PropDevelopment", "Предоставляет услуги по приобретению и обслуживанию недвижимости")
+
+System_Ext(government_registry, "Государственные регистрационные органы", "Отвечают за регистрационные действия с объектами недвижимости")
+System_Ext(tenant_services, "Поставщики услуг ЖКХ", "Уборка, вывоз мусора, оплата проживания")
+System_Ext(smart_home, "IoT устройства", "Умные домофоны, Умные шлагбаумы", $tags="smart_home")
+
+Rel_D(customer, prop_development, "Использует")
+Rel_D(owner, prop_development, "Использует")
+Rel_L(prop_development, government_registry, "СМЭВ", "SOAP")
+Rel_R(manager, prop_development, "Использует")
+Rel_U(business_analyst, prop_development, "Использует")
+Rel_U(accounter, prop_development, "Использует")
+Rel_U(data_analyst, prop_development, "Использует")
+Rel_R(prop_development, tenant_services, "Использует API", "REST")
+Rel_R(prop_development, smart_home, "Использует API", "REST", $tags="smart_home")
+Rel(cybersecurity_spec, prop_development, "Использует", $tags="smart_home")
+@enduml
